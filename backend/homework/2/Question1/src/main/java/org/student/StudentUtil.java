@@ -70,7 +70,7 @@ public class StudentUtil {
         char[][] studentsGrades = new char[numberOfStudents][];
 
         for (int i = 0; i < numberOfStudents; i++) {
-            Logging.logger.info("Enter the grades for student " + studentIdList[i] + ":");
+            Logging.logger.info(String.format("Enter the grades for student %s:", studentIdList[i]));
             String gradesInput = scanner.next();
             studentsGrades[i] = gradesInput.toCharArray();
         }

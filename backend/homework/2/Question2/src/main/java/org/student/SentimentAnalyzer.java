@@ -101,6 +101,7 @@ public class SentimentAnalyzer {
                 "awful", "unprofessional", "poor"};
 
         int[] featureOpinions = detectProsAndCons(review, featureSet, posOpinionWords, negOpinionWords);
-        Logging.logger.info("Opinions on Features: " + Arrays.toString(featureOpinions));
+        Logging.logger.info(String.format("Opinions on Features: %s", Arrays.toString(featureOpinions)));
+
     }
 }
