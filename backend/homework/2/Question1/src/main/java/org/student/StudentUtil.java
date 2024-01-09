@@ -22,8 +22,8 @@ public class StudentUtil {
             for(int j = 0; j < m; j++){
                 grades += map.get(studentsGrades[i][j]);
             }
-            double GPA = grades / (double) m;
-            gpa[i] = GPA;
+            double gradePoint = grades / m;
+            gpa[i] = gradePoint;
         }
 
         return gpa;
@@ -33,7 +33,7 @@ public class StudentUtil {
             studentIdList, char[][] studentsGrades) {
 
         if(lower > higher || lower < 0 || higher < 0)
-            return null;
+            return new int[0];
 
         int listLen = studentIdList.length;
         double[] gpa = calculateGPA(studentIdList,studentsGrades);
@@ -54,16 +54,14 @@ public class StudentUtil {
 
     public static void main(String[] args) {
 
-//        int[] studentIdList = {1001, 1002};
-//        char[][] studentsGrades = { { 'A', 'A', 'A', 'B' }, { 'A', 'B', 'B' } };
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the number of students:");
+        Logging.logger.info("Enter the number of students:");
         int numberOfStudents = scanner.nextInt();
 
         int[] studentIdList = new int[numberOfStudents];
-        System.out.println("Enter the student IDs:");
+        Logging.logger.info("Enter the student IDs:");
 
         for (int i = 0; i < numberOfStudents; i++) {
             studentIdList[i] = scanner.nextInt();
@@ -72,25 +70,26 @@ public class StudentUtil {
         char[][] studentsGrades = new char[numberOfStudents][];
 
         for (int i = 0; i < numberOfStudents; i++) {
-            System.out.println("Enter the grades for student " + studentIdList[i] + ":");
+            Logging.logger.info("Enter the grades for student " + studentIdList[i] + ":");
             String gradesInput = scanner.next();
             studentsGrades[i] = gradesInput.toCharArray();
         }
 
         double[] gpa = StudentUtil.calculateGPA(studentIdList,studentsGrades);
         for(int i = 0; i < gpa.length; i++){
-            Logging.logger.info("GPA of student with id " + studentIdList[i] + " is " + gpa[i]);
+            Logging.logger.info(String.format("GPA of student with id %d is %.4f", studentIdList[i], gpa[i]));
         }
 
-        double lower, higher;
-        System.out.println("Enter lower and higher limit : ");
+        double higher;
+        double lower;
+        Logging.logger.info("Enter lower and higher limit : ");
         lower = scanner.nextDouble();
         higher = scanner.nextDouble();
 
-        if(StudentUtil.getStudentsByGPA(lower,higher,studentIdList,studentsGrades) != null) {
-            int[] res = StudentUtil.getStudentsByGPA(lower,higher,studentIdList,studentsGrades);
+        int[] res = StudentUtil.getStudentsByGPA(lower,higher,studentIdList,studentsGrades);
+        if(res.length != 0){
             for(Integer i : res){
-                Logging.logger.info("ID which have lower<=GPA<=higher : " + i);
+                Logging.logger.info("ID which have lower<=GPA<=higher : {} ", i);
             }
         }
         else{

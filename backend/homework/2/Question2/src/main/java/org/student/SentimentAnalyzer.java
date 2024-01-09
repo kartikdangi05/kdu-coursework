@@ -1,6 +1,7 @@
 package org.student;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 public class SentimentAnalyzer {
@@ -40,8 +41,7 @@ public class SentimentAnalyzer {
         int patternIndex = lowerCaseReview.indexOf(pattern);
 
         if (patternIndex != -1) {
-            // food was delicious
-            // x        y          -> x + pattern.length() == y
+
             for (String posOpinionWord : posOpinionWords) {
                 if (lowerCaseReview.indexOf(posOpinionWord) == patternIndex + pattern.length()) {
                     return 1;
@@ -66,26 +66,18 @@ public class SentimentAnalyzer {
         HashSet<String> posOpinionSet = new HashSet<>();
         HashSet<String> negOpinionSet = new HashSet<>();
 
-        for(String pos : posOpinionWords){
-            posOpinionSet.add(pos);
-        }
-        for(String neg : negOpinionWords){
-            negOpinionSet.add(neg);
-        }
+        Collections.addAll(posOpinionSet, posOpinionWords);
+        Collections.addAll(negOpinionSet, negOpinionWords);
 
 
         for (String sentence : sentences) {
             String[] words = sentence.split(" ");
             for(int i = 0; i < words.length; i++){
-                if(posOpinionSet.contains(words[i])){
-                    if(i + 1 < words.length && words[i+1].equals(feature)){
-                        return 1;
-                    }
+                if(posOpinionSet.contains(words[i]) && i + 1 < words.length && words[i+1].equals(feature)){
+                    return 1;
                 }
-                if(negOpinionSet.contains(words[i])){
-                    if(i + 1 < words.length && words[i+1].equals(feature)){
-                        return -1;
-                    }
+                if(negOpinionSet.contains(words[i]) && i + 1 < words.length && words[i+1].equals(feature)){
+                    return -1;
                 }
             }
         }
@@ -95,7 +87,6 @@ public class SentimentAnalyzer {
 
     public static void main(String[] args) {
         String review = "Haven't been here in years! Fantastic service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive";
-//        String review = "Sorry OG, but you just lost some loyal customers. Horrible service, no smile or greeting just attitude. The breadsticks were stale and burnt, appetizer was cold and the food came out before the salad.";
         String[][] featureSet = {
                 {"ambiance", "ambience", "atmosphere", "decor"},
                 {"dessert", "ice cream", "desert"},

@@ -8,7 +8,6 @@ public class Book {
     private int ratingsCount;
     private String imageUrl;
 
-    // Add getters & setters for author, averageRating, and ratingsCount
     public String getTitle() {
         return this.title;
     }

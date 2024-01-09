@@ -24,7 +24,7 @@ public class APIResponseParser {
 
         startRule = "<ratings_count type=\"integer\">";
         String ratingsCount = parse(response,startRule,endRule);
-        book.setRatingsCount(Integer.parseInt(ratingsCount.replaceAll(",", "")));
+        book.setRatingsCount(Integer.parseInt(ratingsCount.replace(",", "")));
 
         startRule = "<image_url>";
         String imageUrl = parse(response,startRule,endRule);
@@ -36,13 +36,9 @@ public class APIResponseParser {
     public static String parse(String response, String startRule, String endRule){
 
         int startIndex = response.indexOf(startRule) + startRule.length();
-        // <title>Hello</title>.....
-        //        x
 
         String subString = response.substring(startIndex);
         int endIndex = subString.indexOf(endRule);
-        // Hello</title>...
-        //      y
 
         String resultStr;
         resultStr = response.substring(startIndex,endIndex+startIndex);
@@ -50,7 +46,6 @@ public class APIResponseParser {
 
     }
 
-    // write overloaded parse method with the 3 parameters response,startRule, endRule
     public static void main(String[] args) {
         String response = "<work>\n" +
                 "<id type=\"integer\">2361393</id>" +
