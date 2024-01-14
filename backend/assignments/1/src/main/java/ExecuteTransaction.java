@@ -78,7 +78,7 @@ public class ExecuteTransaction implements Runnable {
             Main.setTradersDataList(tradersDataList);
             Main.setCoinsDataList(coinsDataList);
 
-//            getBlockHash();
+            getBlockHash();
             Logging.logInfo("Trader ".concat(trader.getFirstName()).concat(" bought ").concat(coin)
                     .concat(" successfully!"));
         } else {
@@ -122,7 +122,7 @@ public class ExecuteTransaction implements Runnable {
         Main.setTradersDataList(tradersDataList);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logErr(trader.getFirstName().concat(" sold ".concat(coin).concat(" successfully")));
     }
 
@@ -135,7 +135,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logInfo("Price of ".concat(coin).concat(" updated successfully!"));
     }
 
@@ -155,7 +155,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logInfo(coin.concat(" has been added successfully. Total added -> ".concat(Long.toString(coinsData.getSupply()))));
     }
 
