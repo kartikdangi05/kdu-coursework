@@ -97,7 +97,7 @@ public class ExecuteTransaction implements Runnable {
         CoinsData coinsData = coinsDataList.get(coin);
 
         if(!trader.getQty().containsKey(coin)){
-            Logging.logInfo("Cant find this coin in traders portfolio!");
+            Logging.logErr("Cant find this coin in traders portfolio!");
             return;
         }
 
@@ -123,7 +123,7 @@ public class ExecuteTransaction implements Runnable {
         Main.setCoinsDataList(coinsDataList);
 
         getBlockHash();
-        Logging.logErr(trader.getFirstName().concat(" sold ".concat(coin).concat(" successfully")));
+        Logging.logInfo(trader.getFirstName().concat(" sold ".concat(coin).concat(" successfully")));
     }
 
     private void processUpdate(JsonNode data, String coin){
