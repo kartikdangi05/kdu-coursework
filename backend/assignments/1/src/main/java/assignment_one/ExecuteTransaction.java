@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ExecuteTransaction implements Runnable {
 
     private JsonNode jsonNode;
-
+    private static final String WALLET_ADDRESS = "wallet_address";
     private static final Map<String, Lock> coinLocks = new ConcurrentHashMap<>();
     private static final ConcurrentMap<String, Queue<JsonNode>> pendingBuyRequests = new ConcurrentHashMap<>();
 
@@ -47,7 +47,7 @@ public class ExecuteTransaction implements Runnable {
         if (pendingRequests != null && !pendingRequests.isEmpty()) {
             while (!pendingRequests.isEmpty()) {
                 JsonNode pendingRequest = pendingRequests.poll();
-                processBuy(pendingRequest, coin, pendingRequest.get("data").get("wallet_address").asText());
+                processBuy(pendingRequest, coin, pendingRequest.get("data").get(WALLET_ADDRESS).asText());
             }
         }
     }
@@ -81,7 +81,7 @@ public class ExecuteTransaction implements Runnable {
             Main.setTradersDataList(tradersDataList);
             Main.setCoinsDataList(coinsDataList);
 
-//            getBlockHash();
+            getBlockHash();
             Logging.logInfo("Trader ".concat(trader.getFirstName()).concat(" bought ").concat(coin)
                     .concat(" successfully!"));
         } else {
@@ -125,7 +125,7 @@ public class ExecuteTransaction implements Runnable {
         Main.setTradersDataList(tradersDataList);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logInfo(trader.getFirstName().concat(" sold ".concat(coin).concat(" successfully")));
     }
 
@@ -138,7 +138,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logInfo("Price of ".concat(coin).concat(" updated successfully!"));
     }
 
@@ -158,7 +158,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-//        getBlockHash();
+        getBlockHash();
         Logging.logInfo(coin.concat(" has been added successfully. Total added -> ".concat(Long.toString(coinsData.getSupply()))));
     }
 
@@ -173,10 +173,10 @@ public class ExecuteTransaction implements Runnable {
             coinLock.lock();
             try {
                 if (type.equals("BUY")) {
-                    String walletAddress = data.get("wallet_address").asText();
+                    String walletAddress = data.get(WALLET_ADDRESS).asText();
                     processBuy(data, coin, walletAddress);
                 } else if (type.equals("SELL")) {
-                    String walletAddress = data.get("wallet_address").asText();
+                    String walletAddress = data.get(WALLET_ADDRESS).asText();
                     processSell(data, coin, walletAddress);
                     processPendingBuyRequests(coin);
                 } else if (type.equals("UPDATE_PRICE")) {

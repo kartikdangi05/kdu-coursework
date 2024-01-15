@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentMap;
 
 public class CSVProcessor {
 
+    private CSVProcessor(){}
+
     public static ConcurrentMap<String,TradersData> readTraders(String path){
         ConcurrentHashMap<String,TradersData> tradersDataList = new ConcurrentHashMap<>();
         String csvFile = path;
@@ -79,7 +81,6 @@ public class CSVProcessor {
                 if(firstLine){
                     firstLine = false; continue;
                 }
-                System.out.println(values);
                 res.add(values);
             }
 

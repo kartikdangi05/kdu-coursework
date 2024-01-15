@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentMap;
 
 public class MenuOption extends Thread {
+    @Override
     public void run() {
         ConcurrentMap<String, CoinsData> coinsDataList = Main.getCoinsDataList();
         ConcurrentMap<String, TradersData> tradersDataList = Main.getTradersDataList();
