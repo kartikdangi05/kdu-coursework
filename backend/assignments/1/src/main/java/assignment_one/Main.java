@@ -1,3 +1,5 @@
+package assignment_one;
+
 import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
@@ -6,6 +8,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
+    public static final String COIN_PATH = "src/main/resources/coins.csv";
     private static ConcurrentMap<String,CoinsData> coinsDataList;
     private static ConcurrentMap<String,TradersData> tradersDataList;
     private static Map<String, Lock> coinLocks = new ConcurrentHashMap<>();
@@ -48,10 +51,12 @@ public class Main {
 
     }
     public static void main(String[] args) {
-        coinsDataList = CSVProcessor.readCoins("src/main/resources/coins.csv");
+        coinsDataList = CSVProcessor.readCoins(COIN_PATH,"coin");
+        ConcurrentMap<String,CoinsData> coinsDataListByName = CSVProcessor.readCoins(COIN_PATH,"name");
         tradersDataList = CSVProcessor.readTraders("src/main/resources/traders.csv");
+        CSVProcessor.readCoinsAsString(COIN_PATH); // FOR TEST
 
-        JsonNode jsonTransactions = JSONProcessor.readJSON("src/main/resources/medium_transaction.json");
+        JsonNode jsonTransactions = JSONProcessor.readJSON("src/main/resources/small_transaction.json");
         CountDownLatch latch = new CountDownLatch(50);
 
         MenuOption menuOption = new MenuOption();

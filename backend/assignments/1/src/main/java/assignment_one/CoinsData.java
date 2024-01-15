@@ -1,4 +1,4 @@
-import java.util.*;
+package assignment_one;
 
 public class CoinsData {
     private int rank;

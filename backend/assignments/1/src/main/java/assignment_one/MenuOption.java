@@ -1,3 +1,5 @@
+package assignment_one;
+
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentMap;
 

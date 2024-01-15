@@ -1,8 +1,9 @@
+package assignment_one;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -35,7 +36,7 @@ public class CSVProcessor {
         return tradersDataList;
     }
 
-    public static ConcurrentMap<String,CoinsData> readCoins(String path) {
+    public static ConcurrentMap<String,CoinsData> readCoins(String path,String type) {
         String csvFile = path;
         ConcurrentHashMap<String,CoinsData> coinsDataList = new ConcurrentHashMap<>();
         boolean firstLine = true;
@@ -54,12 +55,37 @@ public class CSVProcessor {
                 Long supply = Long.parseLong(values[5]);
 
                 CoinsData obj = new CoinsData(rank,name,symbol,price,supply);
-                coinsDataList.put(symbol,obj);
+                if(type.equals("coin"))
+                    coinsDataList.put(symbol,obj);
+                else
+                    coinsDataList.put(name,obj);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         return coinsDataList;
+    }
+
+    public static ArrayList<String[]> readCoinsAsString(String path){
+        String csvFile = path;
+        ArrayList<String[]> res = new ArrayList<>();
+        boolean firstLine = true;
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if(firstLine){
+                    firstLine = false; continue;
+                }
+                System.out.println(values);
+                res.add(values);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }

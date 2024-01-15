@@ -1,5 +1,6 @@
 package org.example;
 
+import assignment_one.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -18,14 +19,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class for the Main class functionalities.
+ * Test class for the Assignment.Main class functionalities.
  */
 public class MainTest {
 
-    private static Map<String, Coins> coinNameMap;
-    private static Map<String, Coins> coinCodeMap;
-    private static Coins coinOne;
-    private static final List<Coins> coins = new ArrayList<>();
+    private static Map<String, CoinsData> coinNameMap;
+    private static Map<String, CoinsData> coinCodeMap;
+    private static CoinsData coinOne;
+    private static final List<CoinsData> coins = new ArrayList<>();
 
     /**
      * Sets up test data before running any tests.
@@ -35,30 +36,30 @@ public class MainTest {
         coinNameMap = new HashMap<>();
         coinCodeMap = new HashMap<>();
 
-        coinOne = new Coins(1, "Bitcoin", "BTC", 10000.0, 100L);
-        Coins coinTwo = new Coins(2, "Ethereum", "ETH", 5000.0, 50L);
-        Coins coinThree = new Coins(3, "Cardano", "ADA", 2000.0, 30L);
-        Coins coinFour = new Coins(3, "Solana", "SOL", 1000.0, 150L);
+        coinOne = new CoinsData(1, "Bitcoin", "BTC", 10000.0, 100L);
+        CoinsData coinTwo = new CoinsData(2, "Ethereum", "ETH", 5000.0, 50L);
+        CoinsData coinThree = new CoinsData(3, "Cardano", "ADA", 2000.0, 30L);
+        CoinsData coinFour = new CoinsData(3, "Solana", "SOL", 1000.0, 150L);
 
         coins.add(coinOne);
         coins.add(coinTwo);
         coins.add(coinThree);
         coins.add(coinFour);
 
-        coinNameMap.put(coinOne.getCoinName(), coinOne);
-        coinNameMap.put(coinTwo.getCoinName(), coinTwo);
+        coinNameMap.put(coinOne.getName(), coinOne);
+        coinNameMap.put(coinTwo.getName(), coinTwo);
 
-        coinCodeMap.put(coinOne.getCoinSymbol(), coinOne);
-        coinCodeMap.put(coinTwo.getCoinSymbol(), coinTwo);
+        coinCodeMap.put(coinOne.getSymbol(), coinOne);
+        coinCodeMap.put(coinTwo.getSymbol(), coinTwo);
     }
 
     /**
-     * Test case to validate the parsing of CSV files in the Main class.
+     * Test case to validate the parsing of CSV files in the Assignment.Main class.
      * This test ensures that the `parseCSV` method correctly reads and parses the content of a sample CSV file,
      * comparing the expected data with the actual parsed data, covering both coin and trader CSV files.
      *
      * @throws IOException If an I/O error occurs during the test.
-     * @see Main#parseCSV(Path)
+     * @see CSVProcessor#readCoinsAsString(String) 
      */
     @Test
     public void testParseCSV() throws IOException {
@@ -71,7 +72,7 @@ public class MainTest {
         expectedCoins.add(new String[]{"3", "4", "BNB", "BNB", "351.39", "165116761"});
         expectedCoins.add(new String[]{"4", "5", "USD Coin", "USDC", "1.00", "47861732704"});
         expectedCoins.add(new String[]{"5", "6", "Cardano", "ADA", "1.02", "33550574442"});
-        ArrayList<String[]> actual = Main.parseCSV(coinCsvPath);
+        ArrayList<String[]> actual = CSVProcessor.readCoinsAsString(Main.COIN_PATH);
 
         Assertions.assertEquals(expectedCoins.size(), actual.size());
         for (int i = 0; i < expectedCoins.size(); i++) {
@@ -89,7 +90,7 @@ public class MainTest {
         expectedTraders.add(new String[]{"3", "Lenna", "Paprocki", "907-385-4412", "0xab190b6af9471e4c8e717418e940423c"});
         expectedTraders.add(new String[]{"4", "Donette", "Foller", "513-570-1893", "0xbe3887c02d3d33e16ba49b3607c50e3a"});
         expectedTraders.add(new String[]{"5", "Simona", "Morasca", "419-503-2484", "0xbd670dbca4260f5f1403b555bbe2dd9e"});
-        ArrayList<String[]> actualTraders = Main.parseCSV(traderCsvPath);
+        ArrayList<String[]> actualTraders = CSVProcessor.readCoinsAsString(Main.COIN_PATH);
 
         Assertions.assertEquals(expectedTraders.size(), actualTraders.size());
 
@@ -101,13 +102,13 @@ public class MainTest {
     }
 
     /**
-     * Comprehensive test case for validating the concurrent execution of transactions in the Main class.
+     * Comprehensive test case for validating the concurrent execution of transactions in the Assignment.Main class.
      * This test checks the concurrent execution of transactions using JSON files with transaction data.
      * It creates a CountDownLatch to synchronize the completion of transactions across multiple threads.
      * After initiating the transactions, the test waits for a specified time for all threads to finish
      * using latch.await(), and then asserts specific conditions based on the test scenario.
      * The CountDownLatch is used to coordinate the completion of concurrent transactions.
-     * In the ExecuteTransaction class, the latch.countDown() is called in the run method,
+     * In the Assignment.ExecuteTransaction class, the latch.countDown() is called in the run method,
      * signaling that a transaction thread has completed its execution, and the latch count is decremented.
      *
      * @see Main#executeTransactions(JsonNode, CountDownLatch)
@@ -119,15 +120,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_1.json");
+        transactionArray = JSONProcessor.readJSON("src/test/resources/test_transaction_1.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
 
         try {
@@ -139,13 +135,13 @@ public class MainTest {
     }
 
     /**
-     * Comprehensive test case for concurrent execution of transactions in the Main class.
+     * Comprehensive test case for concurrent execution of transactions in the Assignment.Main class.
      * This test uses a different JSON file ("test_transaction_2.json") for concurrent execution,
      * creating a CountDownLatch for synchronization. After initiating the transactions,
      * the test waits for a specified time for all threads to finish using latch.await(),
      * and then asserts specific conditions based on the test scenario.
      * The CountDownLatch is used to coordinate the completion of concurrent transactions.
-     * In the ExecuteTransaction class, the latch.countDown() is called in the run method,
+     * In the Assignment.ExecuteTransaction class, the latch.countDown() is called in the run method,
      * signaling that a transaction thread has completed its execution, and the latch count is decremented.
      *
      * @see Main#executeTransactions(JsonNode, CountDownLatch)
@@ -157,15 +153,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_2.json");
+        transactionArray = JSONProcessor.readJSON("src/test/resources/test_transaction_2.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(5, TimeUnit.SECONDS);
@@ -195,13 +186,9 @@ public class MainTest {
         int numberOfThreads = 12;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_3.json");
+        transactionArray = JSONProcessor.readJSON("src/test/resources/test_transaction_3.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(10, TimeUnit.SECONDS);
@@ -231,13 +218,9 @@ public class MainTest {
         int numberOfThreads = 20;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_4.json");
+        transactionArray = JSONProcessor.readJSON("src/test/resources/test_transaction_4.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(100, TimeUnit.SECONDS);
@@ -249,17 +232,17 @@ public class MainTest {
     }
 
     /**
-     * This test ensures that the `ExecuteTransaction` class implements the `Runnable` interface,
+     * This test ensures that the `Assignment.ExecuteTransaction` class implements the `Runnable` interface,
      * confirming that it is being used in a concurrent execution context.
      *
      * @see ExecuteTransaction
      */
     @Test
     void testExecuteTransactionImplementsRunnable() {
-        // Create an instance of ExecuteTransaction
+        // Create an instance of Assignment.ExecuteTransaction
         ExecuteTransaction executeTransaction = new ExecuteTransaction();
 
-        // Check if the ExecuteTransaction class implements the Runnable interface
-        assertTrue(executeTransaction instanceof Runnable, "ExecuteTransaction should implement Runnable");
+        // Check if the Assignment.ExecuteTransaction class implements the Runnable interface
+        assertTrue(executeTransaction instanceof Runnable, "Assignment.ExecuteTransaction should implement Runnable");
     }
 }

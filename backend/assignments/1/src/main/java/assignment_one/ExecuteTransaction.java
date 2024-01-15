@@ -1,3 +1,5 @@
+package assignment_one;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Map;
 import java.util.Queue;
@@ -41,6 +43,7 @@ public class ExecuteTransaction implements Runnable {
 
     private void processPendingBuyRequests(String coin) {
         Queue<JsonNode> pendingRequests = pendingBuyRequests.get(coin);
+        Logging.logErr("Pending");
         if (pendingRequests != null && !pendingRequests.isEmpty()) {
             while (!pendingRequests.isEmpty()) {
                 JsonNode pendingRequest = pendingRequests.poll();
@@ -78,7 +81,7 @@ public class ExecuteTransaction implements Runnable {
             Main.setTradersDataList(tradersDataList);
             Main.setCoinsDataList(coinsDataList);
 
-            getBlockHash();
+//            getBlockHash();
             Logging.logInfo("Trader ".concat(trader.getFirstName()).concat(" bought ").concat(coin)
                     .concat(" successfully!"));
         } else {
@@ -122,7 +125,7 @@ public class ExecuteTransaction implements Runnable {
         Main.setTradersDataList(tradersDataList);
         Main.setCoinsDataList(coinsDataList);
 
-        getBlockHash();
+//        getBlockHash();
         Logging.logInfo(trader.getFirstName().concat(" sold ".concat(coin).concat(" successfully")));
     }
 
@@ -135,7 +138,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-        getBlockHash();
+//        getBlockHash();
         Logging.logInfo("Price of ".concat(coin).concat(" updated successfully!"));
     }
 
@@ -155,7 +158,7 @@ public class ExecuteTransaction implements Runnable {
         coinsDataList.put(coin, coinsData);
         Main.setCoinsDataList(coinsDataList);
 
-        getBlockHash();
+//        getBlockHash();
         Logging.logInfo(coin.concat(" has been added successfully. Total added -> ".concat(Long.toString(coinsData.getSupply()))));
     }
 
