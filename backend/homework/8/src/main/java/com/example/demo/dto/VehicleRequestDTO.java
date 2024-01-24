@@ -4,8 +4,6 @@ import com.example.demo.models.Speaker;
 import com.example.demo.models.Tyre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor

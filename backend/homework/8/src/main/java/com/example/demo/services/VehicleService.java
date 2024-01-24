@@ -12,7 +12,6 @@ public class VehicleService {
     @Autowired
     VehicleRepo vehicleRepo;
     public VehicleResponseDTO addVehicle(VehicleRequestDTO vehicleRequestDTO){
-        System.out.println("hello");
         Vehicle newVehicle = new Vehicle(vehicleRequestDTO.getName(), vehicleRequestDTO.getFactory(),
                 vehicleRequestDTO.getTyre(), vehicleRequestDTO.getSpeaker(), vehicleRequestDTO.getPrice());
         vehicleRepo.createVehicle(newVehicle);
