@@ -11,6 +11,6 @@ import java.util.UUID;
 
 @Repository
 public interface ShiftRepo extends JpaRepository<Shift, UUID> {
-    @Query("SELECT s FROM Shift s WHERE s.dateStart = :startDate AND s.dateEnd = :endDate ORDER BY s.name ASC")
+    @Query("SELECT s FROM Shift s WHERE s.dateStart >= :startDate AND s.dateEnd <= :endDate ORDER BY s.name ASC")
     List<Shift> findTop3ByDateRange(LocalDate startDate, LocalDate endDate);
 }

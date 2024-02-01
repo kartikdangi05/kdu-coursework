@@ -23,8 +23,9 @@ public class ShiftUsersController {
     }
 
     @DeleteMapping("/delete/{userId}")
-    public void deleteShiftUser(@PathVariable UUID userId) {
+    public ResponseEntity<String> deleteShiftUser(@PathVariable UUID userId) {
         shiftUserService.deleteShiftUser(userId);
+        return new ResponseEntity<>("User deleted successfully!",HttpStatus.OK);
     }
 
 
