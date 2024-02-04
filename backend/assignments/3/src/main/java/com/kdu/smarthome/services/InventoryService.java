@@ -29,12 +29,22 @@ public class InventoryService {
         this.jsonUtil = jsonUtil;
     }
 
+    /**
+     * Adds a item to the inventory
+     * @param inventoryRequestDTO
+     * @return
+     */
     public ResponseInfoDTO addItem(InventoryRequestDTO inventoryRequestDTO){
         Inventory inventory = inventoryMapping.inventoryMapping(inventoryRequestDTO);
         inventoryRepository.save(inventory);
         return new ResponseInfoDTO("Device added successfully!","Kickston ID : ".concat(inventory.getKickstonId()), HttpStatus.OK);
     }
 
+    /**
+     * Fetches all the items of inventory
+     * @return
+     * @throws JsonProcessingException
+     */
     public InventoryResponseDTO getItems() throws JsonProcessingException {
         List<Inventory> inventories = inventoryRepository.findAll();
         String inventoryJSON = jsonUtil.convertListToJSONString(inventories);

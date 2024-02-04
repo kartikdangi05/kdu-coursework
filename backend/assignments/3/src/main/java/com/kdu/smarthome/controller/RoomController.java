@@ -19,6 +19,14 @@ public class RoomController {
     public RoomController(RoomService roomService) {
         this.roomService = roomService;
     }
+
+    /**
+     * Add a room to the house
+     * @param houseId
+     * @param roomNameDTO
+     * @param request
+     * @return
+     */
     @PostMapping("/api/v1/room")
     public ResponseEntity<RoomResponseDTO> addRoom(@RequestParam String houseId, @RequestBody RoomNameDTO roomNameDTO, HttpServletRequest request){
         if(!Validator.isParsable(houseId))

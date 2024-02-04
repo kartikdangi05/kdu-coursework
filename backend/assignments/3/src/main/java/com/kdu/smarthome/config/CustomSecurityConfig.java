@@ -15,6 +15,9 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+/**
+ * Security details regarding the application
+ */
 @Configuration
 @EnableWebSecurity
 public class CustomSecurityConfig  {

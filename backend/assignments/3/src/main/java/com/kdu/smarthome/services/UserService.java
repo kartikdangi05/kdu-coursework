@@ -26,6 +26,11 @@ public class UserService {
         this.jwtUtil = jwtUtil;
     }
 
+    /**
+     * Register a user and return its JWT token
+     * @param userRequestDTO
+     * @return
+     */
     public UserResponseDTO addUser(UserRequestDTO userRequestDTO){
         UserModel userModel = userMapping.userMapping(userRequestDTO);
         userRepository.save(userModel);

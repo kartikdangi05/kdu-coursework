@@ -18,6 +18,12 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    /**
+     * Register a user using valid credentials and return token
+     * @param userRequestDTO
+     * @return
+     */
     @PostMapping("/api/v1/auth/register")
     public ResponseEntity<UserResponseDTO> addUser(@RequestBody UserRequestDTO userRequestDTO){
         UserResponseDTO userResponseDTO = userService.addUser(userRequestDTO);

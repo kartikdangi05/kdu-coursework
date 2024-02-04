@@ -26,6 +26,11 @@ public class JWTUtil {
         this.tokenGeneratorFilter = tokenGeneratorFilter;
     }
 
+    /**
+     * Generates a new token for a user
+     * @param userRequestDTO
+     * @return
+     */
     public String getTokenNew(UserRequestDTO userRequestDTO){
         Authentication authentication = customAuthProvider.authenticate(
                 new UsernamePasswordAuthenticationToken(userRequestDTO.getUsername(), userRequestDTO.getPassword())
@@ -33,6 +38,11 @@ public class JWTUtil {
         return tokenGeneratorFilter.generateJWT(authentication);
     }
 
+    /**
+     * Decodes a token to retrieve user details
+     * @param token
+     * @return
+     */
     public String decodeToken(String token){
         String secretKey = "jxgEQeXHuPq8VdbyYFNkANdudQ53YUn4";
 

@@ -21,12 +21,22 @@ public class DeviceController {
         this.deviceService = deviceService;
     }
 
+    /**
+     * Register a device using credentials
+     * @param deviceRequestDTO kickstonId, username, password
+     * @return
+     */
     @PostMapping("/api/v1/device/register")
     public ResponseEntity<ResponseInfoDTO> registerDevice(@RequestBody DeviceRequestDTO deviceRequestDTO){
         ResponseInfoDTO responseInfoDTO = deviceService.registerDevice(deviceRequestDTO);
         return new ResponseEntity<>(responseInfoDTO, HttpStatus.OK);
     }
 
+    /**
+     * Adding a device to the room of a house
+     * @param deviceAddDTO houseId, roomId, kickstonId
+     * @return
+     */
     @PostMapping("/api/v1/device/add")
     public ResponseEntity<ResponseInfoDTO> addDevice(@RequestBody DeviceAddDTO deviceAddDTO){
         if(!Validator.isParsable(deviceAddDTO.getHouseId()) || !Validator.isParsable(deviceAddDTO.getRoomId()))

@@ -36,6 +36,11 @@ public class DeviceService {
         this.houseRepository = houseRepository;
     }
 
+    /**
+     * Registers a device using valid credentials
+     * @param deviceRequestDTO
+     * @return
+     */
     public ResponseInfoDTO registerDevice(DeviceRequestDTO deviceRequestDTO){
         Optional<Inventory> optionalInventory = inventoryRepository.findByKickstonId(deviceRequestDTO.getKickstonId());
         if(optionalInventory.isPresent() && optionalInventory.get().getDeviceUsername().equals(deviceRequestDTO.getDeviceUsername())){
@@ -54,6 +59,11 @@ public class DeviceService {
         }
     }
 
+    /**
+     * Adds a device to the room and the house
+     * @param deviceAddDTO
+     * @return
+     */
     public ResponseInfoDTO addDevice(DeviceAddDTO deviceAddDTO){
         Optional<Device> optionalDevice = deviceRepository.findByKickstonId(deviceAddDTO.getKickstonId());
         Optional<House> optionalHouse = houseRepository.findById(Long.parseLong(deviceAddDTO.getHouseId()));

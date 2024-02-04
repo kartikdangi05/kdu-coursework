@@ -29,7 +29,12 @@ public class RoomService {
         this.roomMapping = roomMapping;
     }
 
-    @Transactional
+    /**
+     * Add a room to the particular house using houseId
+     * @param id
+     * @param roomName
+     * @return
+     */
     public RoomResponseDTO addRoom(Long id, String roomName){
 
         Optional<House> optionalHouse = houseRepository.findById(id);

@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Used to authenticate user
+ */
 @Component
 public class CustomAuthenticationManager implements AuthenticationProvider {
     private final UserRepository userRepository;

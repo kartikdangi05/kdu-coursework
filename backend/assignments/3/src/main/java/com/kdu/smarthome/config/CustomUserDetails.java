@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Loads the user
+ */
 @Component
 public class CustomUserDetails implements UserDetailsService {
     private final UserRepository userRepository;

@@ -3,6 +3,12 @@ package com.kdu.smarthome.validators;
 public class Validator {
 
     private Validator(){}
+
+    /**
+     * Validates if id is parsable or not
+     * @param string
+     * @return
+     */
     public static boolean isParsable(String string){
         try{
             Long.parseLong(string);

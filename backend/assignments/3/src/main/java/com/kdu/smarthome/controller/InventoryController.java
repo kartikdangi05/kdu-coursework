@@ -21,12 +21,22 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
+    /**
+     * Adds the item to the inventory
+     * @param inventoryRequestDTO
+     * @return
+     */
     @PostMapping("/api/v1/inventory")
     public ResponseEntity<ResponseInfoDTO> addItem(@RequestBody InventoryRequestDTO inventoryRequestDTO){
         ResponseInfoDTO responseInfoDTO = inventoryService.addItem(inventoryRequestDTO);
         return new ResponseEntity<>(responseInfoDTO, HttpStatus.OK);
     }
 
+    /**
+     * Fetches all the items from the inventory
+     * @return
+     * @throws JsonProcessingException
+     */
     @GetMapping("/api/v1/inventory")
     public ResponseEntity<InventoryResponseDTO> getItem() throws JsonProcessingException {
         InventoryResponseDTO inventoryResponseDTO = inventoryService.getItems();

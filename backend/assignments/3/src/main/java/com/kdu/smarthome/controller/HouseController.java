@@ -24,6 +24,13 @@ public class HouseController {
     public HouseController(HouseService houseService) {
         this.houseService = houseService;
     }
+
+    /**
+     * User can add a house and becomes admin of that house
+     * @param houseRequestDTO relevant house details
+     * @param request to fetch header of jwt
+     * @return
+     */
     @PostMapping("/api/v1/house")
     public ResponseEntity<HouseResponseDTO> addHouse(@RequestBody HouseRequestDTO houseRequestDTO, HttpServletRequest request){
         String token = request.getHeader("Authorization").substring(7);
@@ -31,6 +38,13 @@ public class HouseController {
         return new ResponseEntity<>(houseResponseDTO, HttpStatus.OK);
     }
 
+    /**
+     * Adds a user to the user. Can only be added by admin
+     * @param houseId
+     * @param username
+     * @param request
+     * @return
+     */
     @PostMapping("/api/v1/house/{houseId}/add-user")
     public ResponseEntity<ResponseInfoDTO> addUser(@PathVariable String houseId, @RequestBody UsernameDTO username, HttpServletRequest request){
         String token = request.getHeader("Authorization").substring(7);
@@ -38,12 +52,23 @@ public class HouseController {
         return new ResponseEntity<>(userHouseDTO,HttpStatus.OK);
     }
 
+    /**
+     * Gets details of all the houses
+     * @return
+     * @throws JsonProcessingException
+     */
     @GetMapping("/api/v1/house")
     public ResponseEntity<HouseListDTO> getHouses() throws JsonProcessingException {
         HouseListDTO houseListDTO = houseService.getAll();
         return new ResponseEntity<>(houseListDTO,HttpStatus.OK);
     }
 
+    /**
+     * Updates the address of the house by prov
+     * @param houseId
+     * @param newAddress
+     * @return
+     */
     @PutMapping("/api/v1/house")
     public ResponseEntity<ResponseInfoDTO> updateAddress(@RequestParam String houseId,@RequestBody String newAddress) {
         if(!Validator.isParsable(houseId))
@@ -52,6 +77,12 @@ public class HouseController {
         return new ResponseEntity<>(userHouseDTO,HttpStatus.OK);
     }
 
+    /**
+     * Gets the details of a house along with its rooms and its devices
+     * @param houseId
+     * @return
+     * @throws JsonProcessingException
+     */
     @GetMapping("/api/v1/house/{houseId}")
     public ResponseEntity<RoomsDevicesDTO> getRoomsDevices(@PathVariable String houseId) throws JsonProcessingException {
         RoomsDevicesDTO roomsDevicesDTO = houseService.getRoomsDevices(Long.parseLong(houseId));

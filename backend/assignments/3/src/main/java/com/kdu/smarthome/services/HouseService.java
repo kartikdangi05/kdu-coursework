@@ -47,6 +47,12 @@ public class HouseService {
         this.jsonUtil = jsonUtil;
     }
 
+    /**
+     * Adds a house to the user associated with the token.
+     * @param houseRequestDTO
+     * @param token
+     * @return
+     */
     public HouseResponseDTO addHouse(HouseRequestDTO houseRequestDTO, String token){
         String username = jwtUtil.decodeToken(token);
         Optional<UserModel> optionalUser = userRepository.findByUsername(username);
@@ -61,6 +67,13 @@ public class HouseService {
         return new HouseResponseDTO("House added successfully!",house, HttpStatus.OK);
     }
 
+    /**
+     * Adds a user to the house. Can only be added by admin
+     * @param id
+     * @param username
+     * @param token
+     * @return
+     */
     public ResponseInfoDTO addUser(Long id, String username, String token){
         String userAdmin = jwtUtil.decodeToken(token);
         Optional<UserModel> optionalUser = userRepository.findByUsername(userAdmin);
@@ -89,12 +102,23 @@ public class HouseService {
         }
     }
 
+    /**
+     * Fetches all the houses
+     * @return
+     * @throws JsonProcessingException
+     */
     public HouseListDTO getAll() throws JsonProcessingException {
         List<House> houseList = houseRepository.findAll();
         String houses = jsonUtil.convertListToJSONString(houseList);
         return new HouseListDTO("Fetched Successfully!",houses,HttpStatus.OK);
     }
 
+    /**
+     * Updates the address of a house
+     * @param id
+     * @param newAddress
+     * @return
+     */
     public ResponseInfoDTO updateAddress(Long id, String newAddress){
         Optional<House> optHouse = houseRepository.findById(id);
         if(optHouse.isPresent()){
@@ -108,6 +132,12 @@ public class HouseService {
         }
     }
 
+    /**
+     * Get details of the house along with its room and its devices
+     * @param id
+     * @return
+     * @throws JsonProcessingException
+     */
     public RoomsDevicesDTO getRoomsDevices(Long id) throws JsonProcessingException {
         Optional<House> optionalHouse = houseRepository.findById(id);
         if(optionalHouse.isPresent()){
