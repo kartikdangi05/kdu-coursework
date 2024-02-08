@@ -7,4 +7,8 @@ jsonObj["lastName"] = jsonObj.lastName.toUpperCase();
 jsonObj["city"] = jsonObj.city.toUpperCase();
 jsonObj["country"] = jsonObj.country.toUpperCase();
 
-console.log(jsonObj);
+console.log("Json : ",jsonObj);
+
+delete jsonObj.email
+
+console.log("Json after deletion : ",jsonObj);
