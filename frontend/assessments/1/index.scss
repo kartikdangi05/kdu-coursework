@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fba4a6;
+    color: white;
+    font-size: x-large;
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 20px 50px;
+    }
+    
+    a img{
+        display: none;
+    }
+    #nav-title {
+        margin-right: auto;
+        font-size: 1.5em;
+        padding-left: 60px;
+    }
+    
+    header li {
+        list-style: none;
+        display: inline-block;
+        padding: 0 20px;
+        font-size: 1.5em;
+        flex-basis: 100%;
+    }
+    
+    nav {
+        align-self: center;
+        flex-basis: 43%;
+    }
+    
+    header a {
+        text-decoration: none;
+        transition: all 0.3s ease 0s;
+    }
+    
+    header a:hover {
+        color: #b2dfdb;
+    }
+    
+    .content{
+        display: flex;
+        align-items: center;
+        width: 80%;
+    }
+    
+    .left{
+        flex: 1;
+        margin: 60px;
+        padding: 40px;
+        flex-wrap: wrap;
+    }
+    
+    .right{
+        flex: 1
+    }
+    
+    .left p{
+        font-size: 100px;
+        font-weight: 800;
+    }
+    
+    span{
+        font-size: 32px;
+    }
+    
+    #btn{
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #d66769;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: x-large;
+    }
+}
+
+@media screen and (min-width : 576px) and (max-width : 767px) {
+    header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 5px 20px;
+    }
+    a img{
+        display: none;
+    }
+    #nav-title {
+        margin-right: auto;
+        font-size: 1.5em;
+        padding-left: 10px;
+    }
+    
+    header li {
+        list-style: none;
+        display: inline-block;
+        padding: 0 5px;
+    }
+    
+    ul {
+        padding-right: 10px;
+    }
+    
+    header a {
+        text-decoration: none;
+        transition: all 0.3s ease 0s;
+    }
+    
+    header a:hover {
+        color: #b2dfdb;
+    }
+    
+    .content{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin-top: 50px;
+    }
+    
+    .left{
+        flex-basis: 100%;
+        margin: 15px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    
+    .right{
+        flex-basis: 100%;
+        margin-top: 20px;
+    }
+    
+    .left p{
+        font-size: 50px;
+        font-weight: 600;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    span{
+        font-size: 20px;
+    }
+    
+    #btn{
+        margin-top: 30px;
+        padding: 10px;
+        background-color: #d66769;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: x-large;
+    }
+
+    img{
+        width: 350px;
+    }
+}
+
+@media screen and (min-width : 0px) and (max-width : 577px) {
+    header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 5px 20px;
+    }
+
+    a img{
+        width: 50px;
+    }
+    
+    #nav-title {
+        margin-right: auto;
+        font-size: 1.5em;
+        padding-left: 10px;
+    }
+    
+    header li {
+        display: none;
+    }
+    
+    ul {
+        padding-right: 10px;
+    }
+    
+    header a {
+        text-decoration: none;
+        transition: all 0.3s ease 0s;
+    }
+    
+    header a:hover {
+        color: #b2dfdb;
+    }
+    
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin-top: 50px;
+    }
+    
+    .left{
+        flex-basis: 100%;
+        margin: 15px;
+        flex-wrap: wrap;
+        order: 2;
+    }
+    
+    .right{
+        flex-basis: 100%;
+        order: 1;
+    }
+    
+    .left p{
+        font-size: 50px;
+        font-weight: 600;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    span{
+        font-size: 20px;
+    }
+    
+    #btn{
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #d66769;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: x-large;
+    }
+
+    img{
+        width: 300px;
+    }
+
+    img:hover{
+        display: block;
+    }
+}
