@@ -13,7 +13,7 @@ module.exports = defineConfig({
   // Configuration for end-to-end (e2e) tests
   e2e: {
     // Base URL for your application
-    baseUrl: "http://127.0.0.1:5500/kdu-coursework/frontend/assignments/1",
+    baseUrl: "http://kartikassignment1.s3-website.ap-northeast-2.amazonaws.com",
 
     // Setup Node events for visual regression testing using cypress-visual-regression plugin
     setupNodeEvents(on, config) {
