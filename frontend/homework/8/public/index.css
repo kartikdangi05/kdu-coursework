@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+*{
+    font-family: "Fredoka", sans-serif;
+    font-size: large;
+}
+
+#header{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#header h1{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 600;
+    border: 1px solid gray;
+    padding: 20px 0;
+    background-color: aqua;
+}
+
+.search-box{
+    display: flex;
+}
+
+.search-box > input{
+    flex: 4;
+    padding: 10px 5px;
+    margin-right: 10px;
+}
+
+.search-box > button{
+    flex: 1;
+    padding: 10px 0;
+}
+
+#recipes-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 903px;
+    overflow-y: scroll;
+}
+
+#recipes-container > div{
+    flex: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+img{
+    height: 300px;
+    width: 300px;
+}
