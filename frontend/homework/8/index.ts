@@ -186,11 +186,3 @@ const searchRecipes = (query : string) : Promise<Recipe[]> => {
             });
     });
 };
-
-// searchRecipes("pizza")
-//     .then((searchResults) => {
-//         printAllRecipes(searchResults);
-//     })
-//     .catch((error) => {
-//         console.error("Error searching recipes:", error);
-//     });
