@@ -65,7 +65,7 @@ textarea:focus {
 }
 
 .post-container {
-  padding: 0 ;
+  padding: 0;
 }
 
 .middle-post-box {
@@ -156,14 +156,16 @@ textarea {
   padding: 0 10px;
 }
 
-.post-btn-class, .post-btn-class-desk {
+.post-btn-class,
+.post-btn-class-desk {
   flex: 1;
   display: flex;
   width: 64.56px;
   justify-content: flex-end;
 }
 
-.post-btn, .post-btn-desk {
+.post-btn,
+.post-btn-desk {
   background-color: rgb(29, 155, 240);
   padding: 0 16px;
   border-bottom-left-radius: 9999px;
@@ -282,30 +284,30 @@ textarea {
 }
 
 .spinner {
-  border: 4px solid #f3f3f3; 
-  border-top: 4px solid #3498db; 
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  animation: spin 1s linear infinite; 
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-#imagePreviewContainer{
+#imagePreviewContainer {
   position: absolute;
   margin-left: 175px;
   font-size: small;
   text-align: center;
   color: gray;
-}
-
-.image-post{
-  width: 475px;
-  margin-bottom: 5px;
 }
 
 @media screen and (max-width: 414px) {
@@ -462,7 +464,7 @@ textarea {
     vertical-align: top;
   }
 
-  .container-temp-2{
+  .container-temp-2 {
     border-bottom: 1px solid rgb(47, 51, 54);
   }
 
@@ -476,7 +478,7 @@ textarea {
     height: 128px;
   }
 
-  .middle-post-box-2-1-left{
+  .middle-post-box-2-1-left {
     padding-bottom: 12px;
   }
 
@@ -516,7 +518,7 @@ textarea {
     display: flex;
     flex-direction: column;
     transform: translateY(0);
-  }  
+  }
 
 
   .upper-bar {
@@ -585,8 +587,8 @@ textarea {
   }
 
   .post-btn:disabled {
-    background-color: rgb(15,78,120);
-    color: #6c757d; 
+    background-color: rgb(15, 78, 120);
+    color: #6c757d;
   }
 
   main {
@@ -618,28 +620,33 @@ textarea {
     display: none;
   }
 
-  .floating-section-mobile{
+  .floating-section-mobile {
     position: fixed;
     bottom: 20px;
     display: flex;
     width: 100%;
   }
 
-  .mobile-icon > svg{
+  .mobile-icon>svg {
     fill: rgb(255, 255, 255);
     height: 30px;
     width: 30px;
   }
 
-  .mobile-icon{
+  .mobile-icon {
     flex: 1;
     text-align: center;
+  }
+
+  .image-post {
+    width: 300px;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width: 415px) {
 
-  .floating-section-mobile{
+  .floating-section-mobile {
     display: none;
   }
 
@@ -758,10 +765,12 @@ textarea {
     color: rgb(113, 118, 123);
     margin-top: 3px;
   }
-  .lower-container{
+
+  .lower-container {
     height: 53px;
     border-bottom: 1px solid rgb(47, 51, 54);
   }
+
   .lower-container>svg {
     height: 20px !important;
     width: 20px !important;
@@ -781,7 +790,7 @@ textarea {
     padding: 0 16px;
   }
 
-  .post-box-mobile{
+  .post-box-mobile {
     display: none;
   }
 
@@ -809,52 +818,56 @@ textarea {
     box-sizing: border-box;
   }
 
-  .middle-post-box-2-1-left{
+  .middle-post-box-2-1-left {
     width: 220px;
     padding-top: 12px;
     padding-left: 67px;
   }
 
-  .container-temp-3{
+  .container-temp-3 {
     padding-left: 57px;
     height: 44px;
   }
 
-  .middle-post-box-2-1{
+  .middle-post-box-2-1 {
     padding-bottom: 12px;
     border-bottom: 1px solid rgb(47, 51, 54);
   }
 
-  .last-post-box{
+  .last-post-box {
     margin-top: 0px;
   }
 
-  .post-box{
+  .post-box {
     border-bottom: 1px solid rgb(47, 51, 54);
   }
 
-  .post-btn-class-desk{
+  .post-btn-class-desk {
     padding-top: 5px;
   }
 
   .post-btn-desk:disabled {
-    background-color: rgb(15,78,120);
-    color: #6c757d; 
+    background-color: rgb(15, 78, 120);
+    color: #6c757d;
   }
 
-  .post-content{
+  .post-content {
     width: 510px;
   }
 
-.reply,
-.retweet,
-.like-post,
-.unlike-post,
-.stats {
-  width: 38.42px;
-  margin-right: 79.54px;
-}
+  .reply,
+  .retweet,
+  .like-post,
+  .unlike-post,
+  .stats {
+    width: 38.42px;
+    margin-right: 79.54px;
+  }
 
+  .image-post {
+    width: 475px;
+    margin-bottom: 5px;
+  }
 
 }
 

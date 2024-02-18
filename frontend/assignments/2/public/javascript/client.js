@@ -182,6 +182,7 @@ async function fetchPosts(isScrollEvent) {
 
     try {
         if(isScrollEvent)   currentPage++;
+        else    currentPage = 1;
         const response = await fetch(`/api/posts?currentPage=${currentPage}`);
         if (response.ok) {
             const mainContainer = document.querySelector('.post-container');
@@ -233,7 +234,8 @@ async function handleScroll() {
 
 window.addEventListener('scroll', handleScroll);
 
-const imageInput = document.querySelector('.imageInput');
+const imageInput = document.querySelector('#imageInput');
+const imageInput2 = document.querySelector('#imageInput2');
 let imageUpload = false;
 let imageUrl = null;
 
@@ -252,11 +254,23 @@ imageInput.addEventListener('change', (event) => {
     }
 });
 
+imageInput2.addEventListener('change', (event) => {
+    const files = event.target.files;
+    if (files && files[0]) {
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        imagePreviewContainer.style.display = 'block';
+        imagePreviewContainer.textContent = 'Image has been added successfully!';
+        imageUrl = URL.createObjectURL(files[0]);
+        postBtnDesk.disabled = false;
+        postBtn.disabled = false;
+    }
+});
+
 /**
  * Adding posts in mobile
  */
 postBtn.addEventListener('click', async () => {
-    let postContent = postInputDesk.value;
+    let postContent = postInput.value;
     const hashtagRegex = /(#\w+)/g;
     postContent = postContent.replace(hashtagRegex, '<span style="color: rgb(29, 155, 240);">$&</span>');
 
@@ -267,6 +281,9 @@ postBtn.addEventListener('click', async () => {
         image: loggedInUser.userDetails.profile_url,
         imageUrl: imageUrl
     };
+
+    postBox.classList.toggle("show");
+    layout.classList.toggle("notShow");
 
     const url = 'http://localhost:3001/api/posts';
 
@@ -319,7 +336,7 @@ postBtnDesk.addEventListener('click', async () => {
         });
         if (response.ok) {
             console.log('Post successful');
-            postInput.value = '';
+            postInputDesk.value = '';
         } else {
             console.error('Error posting content:', response.statusText);
         }

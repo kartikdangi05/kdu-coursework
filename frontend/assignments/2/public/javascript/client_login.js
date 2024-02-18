@@ -18,9 +18,10 @@ function verify() {
     .then(response => {
         if (response.ok) {
             return response.json();
+        } else if (response.status === 401) {
+            throw new Error('Invalid username or password');
         } else {
-            alert('Invalid username or password');
-            window.location.href ='http://localhost:3001/user/login';
+            throw new Error('An error occurred');
         }
     })
     .then(data => {
@@ -28,7 +29,8 @@ function verify() {
         window.location.href = 'http://localhost:3001/';
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again later.');
+        console.error('Error:', error.message);
+        alert('Invalid username or password');
     });
 }
+
