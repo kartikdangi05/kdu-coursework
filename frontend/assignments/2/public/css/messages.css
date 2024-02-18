@@ -1,0 +1,277 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+
+* {
+  background-color: black;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: inherit;
+  height: inherit;
+  display: flex;
+}
+
+.dp4 {
+  border-radius: 50%;
+}
+
+svg {
+  fill: rgb(239, 243, 244);
+}
+
+.navigation-section-desktop {
+  width: 275px;
+  margin-left: 285px;
+  order: 1;
+}
+
+.nav-desk-main {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.x-logo>svg {
+  width: 50px;
+  height: 30px;
+}
+
+.x-logo {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.other-navs {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.home-nav,
+.home-nav-profile {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.home-nav>svg {
+  width: 26.25px;
+  height: 26.25px;
+}
+
+.post-btn-class-desktop {
+  width: 233.09px;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
+.post-btn-desktop {
+  padding: 15px 32px;
+  width: 233.09px;
+  border: 0;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  background-color: rgb(29, 155, 240);
+}
+
+.home-nav-profile {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.home-nav-profile-content {
+  display: block;
+  margin-left: 10px;
+}
+
+.home-nav-profile>svg {
+  width: 18.75px;
+  height: 18.75px;
+  margin-left: 50px;
+}
+
+.home-nav-profile-username {
+  color: rgb(113, 118, 123);
+  margin-top: 3px;
+}
+
+.messages {
+  display: flex;
+  height: 97.5vh;
+  order: 2;
+  flex: 1;
+  border-left: 1px solid gray;
+}
+
+.users-active {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.message-show {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1.5;
+  border-left: 1px solid gray;
+}
+
+.active-users {
+  margin-top: 30px;
+}
+
+.active-user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+img {
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+span {
+  color: gray;
+}
+
+.no-active-user {
+  text-align: center;
+  font-size: xx-large;
+  margin-top: 10px;
+}
+
+.msg-heading-2 {
+  display: inline-block;
+  padding: 15px;
+  border-bottom: 1px solid gray;
+}
+
+.message-container {
+  flex: 1;
+}
+
+.input-msg-box {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+  opacity: 0;
+}
+
+#message-box {
+  flex: 1;
+  padding: 10px 20px;
+  font-size: 17px;
+  border: 0;
+  background-color: rgb(32, 35, 39);
+  border-bottom-left-radius: 9999px;
+  border-top-left-radius: 9999px;
+}
+
+#send-message-btn {
+  flex: 0.1;
+  text-align: end;
+  padding-right: 5px;
+  border: 0;
+  background-color: rgb(32, 35, 39);
+  border-bottom-right-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.send-icon {
+  fill: aqua;
+  background-color: rgb(32, 35, 39);
+  height: 20px;
+  width: 40px;
+}
+
+#message-box:hover {
+  outline: none;
+}
+
+#message-box:focus {
+  outline: none;
+}
+
+.message-text {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-top: 5px;
+}
+
+.outgoing {
+  margin-left: auto;
+  max-width: 70%;
+  padding: 5px;
+  text-align: end;
+  margin-right: 15px;
+  word-wrap: break-word;
+}
+
+.incoming {
+  margin-right: auto;
+  max-width: 70%;
+  padding: 5px;
+  text-align: start;
+  margin-left: 15px;
+  word-wrap: break-word;
+}
+
+.message-content {
+  margin-top: 5px;
+  padding: 12px;
+  background-color: rgb(40, 155, 231);
+  color: white;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  font-size: large;
+  word-wrap: break-word;
+}
+
+.timestamp {
+  padding: 5px;
+  font-size: small;
+  color: rgb(202, 194, 194);
+}
+
+.back-arrow{
+  display: none;
+}
+
+@media screen and (max-width : 415px) {
+    .navigation-section-desktop, .message-show{
+      display: none;
+    }
+
+    .users-active{
+      width: 100%;
+    }
+
+    .msg-heading-2 > p{
+      display: inline-block;
+      font-size: 30px;
+    }
+    
+    .msg-heading-2 > h3{
+      padding-right: 10px;
+      padding-left: 10px;
+      display: inline-block;
+    }
+
+}
