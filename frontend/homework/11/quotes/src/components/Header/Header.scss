@@ -1,0 +1,49 @@
+.heading{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+
+#newQuote{
+    width: max-content;
+    padding: 3% 6%;
+    background-color: rgb(255, 197, 197);
+    color: blue;
+    border: 0;
+    font-size: larger;
+    border-radius: 5%;
+    font-weight: 600;
+}
+
+.filter-heading{
+    border-bottom: 1px solid gray;
+    padding-bottom: 0.5%;
+    margin-bottom: 8px;
+}
+
+.filters{
+    display: flex;
+    margin-right: 10px ;
+    font-weight: 500;
+}
+
+.header-tag{
+    background-color: palevioletred;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 1px solid palevioletred;
+    padding: 0 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+#delete-btn{
+    padding: 5px;
+    background-color: palevioletred;
+    border: 0;
+    padding-top: 8px;
+}
