@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import './heading.scss'
+import { useDispatch } from "react-redux";
+import { searchTodo } from "../../redux/Reducer";
 
-interface ISearch{
-  searchFunc: (search : string) => void
-}
-
-export default function Header({searchFunc} : Readonly<ISearch>) {
+export default function Header() {
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     searchFunc(search);
@@ -14,6 +13,10 @@ export default function Header({searchFunc} : Readonly<ISearch>) {
 
   const findItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+  }
+
+  const searchFunc = (search : string) => {
+    dispatch(searchTodo(search));
   }
   
   return (

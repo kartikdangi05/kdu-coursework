@@ -1,17 +1,23 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../redux/Reducer";
 
-interface AddItemProps {
-  addItem: (item : string) => void;
-}
-
-function AddItem({addItem} : Readonly<AddItemProps>) {
+function AddItem() {
   const [inputValue, setInputValue] = useState("")
+  const [id, setId] = useState(1);
+  const dispatch = useDispatch();
 
   const handleClick = (e : React.MouseEvent<HTMLButtonElement>) : void => {
     e.preventDefault();
     addItem(inputValue);
     setInputValue("");
   }
+
+  const addItem = (item : string) => {
+      dispatch(addTodo({id,text : item}));
+      setId(id => id + 1);
+  };
+
   
   return (
     <div className="add-items">
