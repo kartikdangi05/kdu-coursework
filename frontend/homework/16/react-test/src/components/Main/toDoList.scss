@@ -1,0 +1,92 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1% auto;
+    padding: 1%;
+    width: 80%;
+    outline: 1px solid gray;
+}
+
+.items-list ul:not(:first-child){
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.items-list ul:first-child{
+    border: 1px solid gray;    
+}
+
+.item{
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.item-text{
+    padding-left: 1%;
+    border: none;
+}
+
+.delete-icon{
+    color: red;
+    border: none;
+}
+
+.add-item-input{
+    display: flex;
+}
+
+#item-text{
+    margin-right: 1%;
+    padding: 0.75%;
+    font-size: 15px;
+    flex: 5;
+}
+
+#add-post{
+    padding: 0.75%;
+    background-color: black;
+    color: white;
+}
+
+#search{
+    font-size: large;
+}
+
+.checkbox{
+    display: flex;
+    padding-right: 20px;
+}
+
+#check-btn{
+    margin: 0 20%;
+    padding: 0 3px;
+    color: white;
+    border: 0;
+    background-color: green;
+    height: 18px;
+    width: 18px;
+}
+
+#clear-btn{
+    padding: 1%;
+    background-color: pink;
+    border-radius: 10px;
+    border: 0;
+    margin-top: 10px;
+}
+
+.checked{
+    background-color: rgb(202, 248, 202);
+    .item-text{
+        text-decoration: line-through;
+    }
+}
