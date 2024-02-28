@@ -1,7 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
-
-const API_URL = 'https://fakestoreapi.com/products';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchProducts } from "./thunk/ProductThunk";
 
 export interface IProduct{
     id: number;
@@ -22,37 +20,30 @@ interface ProductsState {
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
 }
 
-const initialState : ProductsState = {
+const initialState: ProductsState = {
     productsList: [],
     error: '',
     status: 'idle',
 }
 
-export const fetchProducts = createAsyncThunk<IProduct[]>("posts/fetchProducts", async () => {
-    const response = await axios.get(API_URL);
-    return response?.data;
-})
-
 const productsSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers(builder) {
         builder
             .addCase(fetchProducts.pending, (state) => {
-                state.status = "loading"
+                state.status = "loading";
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.status = "succeeded"
-                state.productsList = state.productsList.concat(action.payload);
+                state.status = "succeeded";
+                state.productsList = action.payload;
             })
             .addCase(fetchProducts.rejected, (state, action) => {
-                state.status = "failed"
-                state.error = action.error.message
-            })
-    }
-})
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+    },
+});
 
 export default productsSlice.reducer;

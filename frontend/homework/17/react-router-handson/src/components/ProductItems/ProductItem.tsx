@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IProduct } from "../../redux/ProducrReducer"
+import { IProduct } from "../../redux/ProducerSlice"
 
 const itemStyle = {
   item: {

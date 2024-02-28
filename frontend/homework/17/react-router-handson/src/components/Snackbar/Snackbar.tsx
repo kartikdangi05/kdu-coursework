@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { hideSnackbar } from '../../redux/SnackbarReducer';
+import { hideSnackbar } from '../../redux/SnackbarSlice';
 import { RootState } from '../../redux/Store';
 import { useEffect } from 'react';
 

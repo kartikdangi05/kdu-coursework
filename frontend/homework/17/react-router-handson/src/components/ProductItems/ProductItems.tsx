@@ -3,9 +3,9 @@ import ProductItem from "./ProductItem";
 import Loader from "../Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../../redux/Store";
-import { fetchProducts } from "../../redux/ProducrReducer";
+import { fetchProducts } from "../../redux/thunk/ProductThunk";
 import Snackbar from "../Snackbar/Snackbar";
-import { showSnackbar } from "../../redux/SnackbarReducer";
+import { showSnackbar } from "../../redux/SnackbarSlice";
 
 const itemsStyle = {
   main: {
