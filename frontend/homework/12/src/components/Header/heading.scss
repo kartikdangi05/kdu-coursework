@@ -1,0 +1,23 @@
+.heading{
+    display: flex;
+    background-color: rgb(40,167,69);
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.heading > h1{
+    flex: 3;
+    display: flex;
+    justify-content: space-around;
+}
+
+.heading > input{
+    flex: 1;
+    padding: 0.7%;
+    margin-right: 5%;
+}
+
+.item-lister{
+    color: white;
+    text-align: start;
+}
