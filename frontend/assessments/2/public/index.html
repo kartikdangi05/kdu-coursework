@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment 2</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header id="heading">
+        KDU Stock Market Dashboard
+    </header>
+    <main id= "main">
+        <div class="info">
+            <div class="stock-info">
+                <div class="stock-name">
+                    <img id="zomato_logo" src="../zomato_logo.jpg" alt="Zomato logo">
+                    <p id="zomato-tag">Zomato</p>
+                </div>
+                <div class="stock-price">
+                    <p id="price-tag">Price</p>
+                    <p id="price">142.32</p>
+                    <p id="up">&#8593</p>
+                    <p id="down" style="display: none;">&#8595</p>
+                    <p id="percentChange">0.00%</p>
+                </div> 
+                <div class="stock-qty">
+                    <input type="text" id="qty-input" name="qty-input" placeholder="Enter Qty">
+                </div>
+                <div class="buy">
+                    <button id="buy-btn">Buy</button>
+                </div>
+                <div class="sell">
+                    <button id="sell-btn">Sell</button>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid-container-1">
+
+                </div>
+                <div class="grid-container-2">
+
+                </div>
+                <div class="grid-container-3">
+
+                </div>
+                <div class="grid-container-4">
+
+                </div>
+                <div class="grid-container-5">
+
+                </div>
+                <div class="grid-container-6">
+                    
+                </div>
+                <div class="grid-container-7">
+                    
+                </div>
+                <div class="grid-container-8">
+                    
+                </div>
+                <div class="grid-container-9">
+                    
+                </div>
+                <div class="grid-container-10">
+                    
+                </div>
+                <div class="grid-container-11">
+                    
+                </div>
+                <div class="grid-container-12">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="history">
+            <p id="history-tag">History</p>
+        </div>
+    </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+<script src="../client.js"></script>
+</html>
