@@ -1,0 +1,80 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+
+.heading{
+    display: flex;
+    background-color: rgb(40,167,69);
+    justify-content: center;
+    align-items: center;
+}
+
+.heading > h1{
+    flex: 3;
+    display: flex;
+    justify-content: space-around;
+}
+
+.heading > input{
+    flex: 1;
+    padding: 0.7%;
+    margin-right: 5%;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1% auto;
+    padding: 1%;
+    width: 80%;
+    outline: 1px solid gray;
+}
+
+.items-list ul:not(:first-child){
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.items-list ul:first-child{
+    border: 1px solid gray;    
+}
+
+.item{
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.item-text{
+    padding-left: 1%;
+    border: none;
+}
+
+.delete-icon{
+    padding-right: 1%;
+    color: red;
+    border: none;
+}
+
+.add-item-input{
+    display: flex;
+}
+
+#item-text{
+    margin-right: 1%;
+    padding: 0.75%;
+    font-size: 15px;
+}
+
+#add-post{
+    padding: 0.75%;
+    background-color: black;
+    color: white;
+}
+
+#search{
+    font-size: large;
+}
