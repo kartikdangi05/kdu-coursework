@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: xx-large;
+}
+
+.heading{
+    text-align: start;
+    font-size: 80px;
+}
+
+.detail{
+    text-align: start;
+}
+
+.container{
+    width: 80%;
+    text-align: center;
+    margin: 20px 20px;
+}
+
+.summary{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.summary div{
+    flex-grow: 1;
+    text-align: start;
+}
+
+.temperature{
+    display: inline-block;
+}
+
+.temperature img {
+    vertical-align: middle; 
+    margin-right: 5px; 
+}
+
+.temperature p{
+    display: inline;
+    font-size: x-large;
+}
+
+.days{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px ;
+}
+
+.day{
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.day p:first-child{
+    font-weight: bold;
+}
