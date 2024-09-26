@@ -1,4 +1,4 @@
-package com.kdu.caching.service;
+package com.caching.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ComponentScan(basePackages = "com.kdu.caching")
+@ComponentScan(basePackages = "com.caching")
 public class GeoCodingImpTest {
     private static Object expectedGeoCodingApiResponse;
     private static Object expectedReverseGeoCodingApiResponse;
@@ -116,6 +116,8 @@ public class GeoCodingImpTest {
                 .andReturn();
 
         String resultInStringFormat = result.getResponse().getContentAsString();
+
+        System.out.println("Actual response: " + resultInStringFormat);
 
         // Create an ObjectMapper
         ObjectMapper objectMapper = new ObjectMapper();
